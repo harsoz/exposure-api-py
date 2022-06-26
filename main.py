@@ -1,16 +1,13 @@
 from flask import Flask
+from controllers.home_controller import home
 
 app = Flask(__name__)
 
+app.register_blueprint(home, url_prefix='/api')
 
-@app.route("/diana/prueba")
-def hello():
-    return "Hello, World!"
+@app.route('/')
+def index():
+    return "Hello World!"
 
-
-@app.route("/diana/prueba2")
-def hello1():
-    
-    return "Hello, putos!"
-
-app.run()
+if __name__ == "__main__":
+    app.run()
