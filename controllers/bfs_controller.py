@@ -1,10 +1,12 @@
 from flask import Blueprint, jsonify, request
+from flask_cors import cross_origin
 from shared.helpers import is_legal_pos, offsets
 from shared.queue_al import Queue
 
 bfs = Blueprint('bfs', __name__)
 
 @bfs.route('/compute', methods=['POST'])
+@cross_origin()
 def compute():
     body = request.json  
     queue = Queue()
