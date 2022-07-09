@@ -4,23 +4,23 @@ from shared.queue_al import Queue
 
 bfs = Blueprint('bfs', __name__)
 
-@bfs.route('/bfs/compute', methods=['POST'])
+@bfs.route('/compute', methods=['POST'])
 def compute():
-    content_type = request.headers.get('Content-Type')
-    body = ""
-    if (content_type == 'application/json'):
-        body = request.json   
-     
+    body = request.json  
     queue = Queue()
-    test = tuple(body['start'])
     queue.enqueue(tuple(body['start']))
     predecessors = { "start": None}
+    path = []
 
     while not queue.is_empty():
         current_cell = queue.dequeue()
+        x, y = current_cell
+
+        # send tuple as list for react
+        path.append([x, y])
 
         if current_cell == tuple(body['goal']):
-            return "yeah"
+            return jsonify(path)
 
         for direction in ["up", "right", "down", "left"]:
             row_offset, col_offset = offsets[direction]
