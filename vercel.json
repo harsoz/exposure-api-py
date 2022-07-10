@@ -12,8 +12,23 @@
     ],
     "routes": [
         {
-            "src": "/(.*)",
+            "src": "/api/v1/(.*)",
             "dest": "main.py",
+            "headers": {
+                "access-control-allow-origin": "*"
+            },
+            "methods": [
+                "GET",
+                "POST",
+                "PUT",
+                "PATCH",
+                "OPTIONS",
+                "DELETE"
+            ]
+        },
+        {
+            "src": "/api/v1/(.*)",
+            "dest": "./controllers/bfs_controller.py",
             "headers": {
                 "access-control-allow-origin": "*"
             },
