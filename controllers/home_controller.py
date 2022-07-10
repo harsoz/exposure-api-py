@@ -1,7 +1,9 @@
 from flask import Blueprint, jsonify
+from flask_cors import CORS
 from services.home_service import is_cat
 
 home = Blueprint('home', __name__)
+CORS(home, resources={r"/api/v1/*": {"origins": "*"}})
 
 @home.route('/cat/isCat', methods=['GET'])
 def isCat():
