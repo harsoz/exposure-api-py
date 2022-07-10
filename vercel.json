@@ -25,6 +25,21 @@
                 "OPTIONS",
                 "DELETE"
             ]
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/controllers/bfs_controller.py",
+            "headers": {
+                "access-control-allow-origin": "*"
+            },
+            "methods": [
+                "GET",
+                "POST",
+                "PUT",
+                "PATCH",
+                "OPTIONS",
+                "DELETE"
+            ]
         }
     ]
 }
