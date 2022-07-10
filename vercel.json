@@ -13,18 +13,7 @@
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "main.py",
-            "headers": {
-                "access-control-allow-origin": "*"
-            },
-            "methods": [
-                "GET",
-                "POST",
-                "PUT",
-                "PATCH",
-                "OPTIONS",
-                "DELETE"
-            ]
+            "dest": "main.py"
         }
     ]
 }
