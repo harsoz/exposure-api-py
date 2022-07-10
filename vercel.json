@@ -14,12 +14,9 @@
         {
             "src": "/(.*)",
             "dest": "main.py",
-            "headers": [
-                {
-                    "key": "access-control-allow-origin",
-                    "value": "*"
-                }
-            ],
+            "headers": {
+                "access-control-allow-origin": "*"
+            },
             "methods": [
                 "GET",
                 "POST",
