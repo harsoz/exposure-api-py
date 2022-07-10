@@ -4,7 +4,8 @@ from controllers.home_controller import home
 from controllers.bfs_controller import bfs
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
+#cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}}) 
+cors = CORS(app, origins=["http://localhost:3000", "https://screener-chi.vercel.app"])
 app.register_blueprint(home, url_prefix='/api/v1/home')
 app.register_blueprint(bfs, url_prefix='/api/v1/bfs')
 
