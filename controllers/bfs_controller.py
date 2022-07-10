@@ -4,7 +4,6 @@ from shared.helpers import is_legal_pos, offsets
 from shared.queue_al import Queue
 
 bfs = Blueprint('bfs', __name__)
-# CORS(bfs, resources={r"/api/v1/*": {"origins": "*"}})
 
 @bfs.route('/compute', methods=['POST'])
 def compute():
