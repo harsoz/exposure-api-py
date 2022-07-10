@@ -4,6 +4,7 @@ from controllers.home_controller import home
 from controllers.bfs_controller import bfs
 
 app = Flask(__name__)
+
 CORS(app, resources={r"/api/v1/*": {"origins": "*"}}) 
 
 app.register_blueprint(home, url_prefix='/api/v1/home')
