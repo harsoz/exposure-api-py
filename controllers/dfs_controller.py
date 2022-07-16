@@ -19,7 +19,7 @@ def compute():
         if current_cell == tuple(body['goal']):
             return jsonify(path)
 
-        for direction in ["up", "rigth", "down", "left"]:
+        for direction in ["up", "right", "down", "left"]:
             row_offset, col_offset = offsets[direction]
             neighbor = (current_cell[0] + row_offset,
                         current_cell[1] + col_offset)
