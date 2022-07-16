@@ -1,5 +1,4 @@
 from flask import Blueprint, jsonify, request
-from flask_cors import CORS
 from shared.helpers import is_legal_pos, offsets
 from shared.queue_al import Queue
 
