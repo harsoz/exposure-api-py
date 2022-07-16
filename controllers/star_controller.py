@@ -1,6 +1,6 @@
 from shared.priority_queue import PriorityQueue
 from flask import Blueprint, jsonify, request
-from shared.helpers import is_legal_pos, offsets
+from shared.helpers import get_path, is_legal_pos, offsets
 
 star = Blueprint('star', __name__)
 
@@ -12,13 +12,10 @@ def compute():
     pq.put(tuple(body['start']), 0)
     predecessors = {"start": None}
     g_values = {"start": 0}
-    path = []
     while not pq.is_empty():
         current_cell = pq.get()
-        x, y = current_cell
-        path.append([x, y])
         if current_cell == tuple(body['goal']):
-            return jsonify(path)
+            return jsonify(get_path(predecessors, tuple(body['start']), tuple(body['goal']) ))
 
         for direction in ["up", "right", "down", "left"]:
             row_offset, col_offset = offsets[direction]

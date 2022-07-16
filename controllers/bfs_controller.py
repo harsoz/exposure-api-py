@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from shared.helpers import is_legal_pos, offsets
+from shared.helpers import get_path, is_legal_pos, offsets
 from shared.queue_al import Queue
 
 bfs = Blueprint('bfs', __name__)
@@ -10,17 +10,11 @@ def compute():
     queue = Queue()
     queue.enqueue(tuple(body['start']))
     predecessors = { "start": None}
-    path = []
 
     while not queue.is_empty():
         current_cell = queue.dequeue()
-        x, y = current_cell
-
-        # send tuple as list for react
-        path.append([x, y])
-
         if current_cell == tuple(body['goal']):
-            return jsonify(path)
+            return jsonify(get_path(predecessors, tuple(body['start']), tuple(body['goal']) ))
 
         for direction in ["up", "right", "down", "left"]:
             row_offset, col_offset = offsets[direction]
